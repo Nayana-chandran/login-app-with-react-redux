@@ -6,21 +6,17 @@ function setLoginPending(isLoginPending) {
   return { type: LOGIN_PENDING, isLoginPending };
 }
 
-function setLoginSuccess(isLoginSucess) {
-  return { type: LOGIN_SUCESS, isLoginSucess };
+function setLoginSuccess(isLoginSuccess) {
+  return { type: LOGIN_SUCESS, isLoginSuccess };
 }
 function setLoginFailed(loginFailed) {
   return { type: LOGIN_FAILED, loginFailed };
 }
 
-export function login() {
+export function login(email, password) {
   return dispatch => {
     dispatch(setLoginPending(true));
-    dispatch(setLoginSuccess(false));
-    dispatch(setLoginFailed(null));
 
-    var email = "";
-    var password = "";
     callLoginApi(email, password, error => {
       dispatch(setLoginPending(false));
       if (!error) {
@@ -34,17 +30,13 @@ export function login() {
 
 function callLoginApi(email, password, callback) {
   setTimeout(() => {
-    if (email === "nayana@contus.in" && password === "12345") {
+    if (email === "nayanakrish777@gmail.com" && password === "12345") {
       return callback(null);
     } else {
       return callback(new Error("Invalid email and password"));
     }
   }, 1000);
 }
-
-const SET_LOGIN_PENDING = "SET_LOGIN_PENDING";
-const SET_LOGIN_SUCCESS = "SET_LOGIN_SUCCESS";
-const SET_LOGIN_ERROR = "SET_LOGIN_ERROR";
 
 export default function reducer(
   state = {
@@ -55,17 +47,17 @@ export default function reducer(
   action
 ) {
   switch (action.type) {
-    case SET_LOGIN_PENDING:
+    case LOGIN_PENDING:
       return Object.assign({}, state, {
         isLoginPending: action.isLoginPending
       });
 
-    case SET_LOGIN_SUCCESS:
+    case LOGIN_SUCESS:
       return Object.assign({}, state, {
         isLoginSuccess: action.isLoginSuccess
       });
 
-    case SET_LOGIN_ERROR:
+    case LOGIN_FAILED:
       return Object.assign({}, state, {
         loginFailed: action.loginFailed
       });
