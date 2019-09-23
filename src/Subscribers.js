@@ -6,7 +6,7 @@ class Subscribers extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://192.168.8.253:8080/allcustomers/")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
       .then(json => this.setState({ data: json }));
   }
@@ -21,12 +21,14 @@ class Subscribers extends React.Component {
               <th>No</th>
               <th>Subscriber Name</th>
               <th>Subscriber Address</th>
+              <th>Channel Website</th>
             </tr>
             {this.state.data.map(value => (
               <tr>
                 <td>{value.id}</td>
                 <td>{value.name}</td>
-                <td>{value.address}</td>
+                <td>{value.email}</td>
+                <td>{value.website}</td>
               </tr>
             ))}
           </table>
