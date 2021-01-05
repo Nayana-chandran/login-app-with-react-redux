@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@version/react-router-v3": "^1.0.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
